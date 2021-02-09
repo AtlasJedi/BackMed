@@ -1,0 +1,15 @@
+
+spring:
+  datasource:
+    password: 48467711pp
+    url: jdbc:mysql://localhost:3306/daneprzychodni
+    username: root
+    resources:
+      add-mappings: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
