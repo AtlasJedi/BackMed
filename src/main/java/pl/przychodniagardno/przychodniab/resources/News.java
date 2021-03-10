@@ -1,6 +1,7 @@
 package pl.przychodniagardno.przychodniab.resources;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.hibernate.dialect.TypeNames;
@@ -12,74 +13,34 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 public class News implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="AKT", nullable = false, updatable = false)
+    @Column(name="ID", nullable = false, updatable = false)
     private Long    id;
 
+    @Column(name="TITLE", nullable = false)
     private String  title;
+
     @Lob
-    @Column()
-    private String  content;
-    private String  imgURL;
-    private String  readMoreURL;
-    private Date    date;
+    @ElementCollection
+    @Column(name="CONTENT_LIST", nullable = false)
+    private List<String>  content;
 
-    public News(Long id, String title, Date date, String content, String imgURL, String readMoreURL) {
-        this.id = id;
-        this.date = date;
-        this.title = title;
-        this.content = content;
-        this.imgURL = imgURL;
-        this.readMoreURL = readMoreURL;
-    }
+    @Column(name="IMG_URL")
+    private String imgURL;
 
-    public String getTitle() {
-        return title;
-    }
+    @Column(name="READ_MORE_URL")
+    private String readMoreURL;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    @Column(name="POSITION")
+    private Integer position;
 
-    public News() {
-    }
+    @Column(name="IS_ACTIVE")
+    private boolean isActive;
 
-    public Long getId() {
-        return id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getImgURL() {
-        return imgURL;
-    }
-
-    public void setImgURL(String imgURL) {
-        this.imgURL = imgURL;
-    }
-
-    public String getReadMoreURL() {
-        return readMoreURL;
-    }
-
-    public void setReadMoreURL(String readMoreURL) {
-        this.readMoreURL = readMoreURL;
-    }
+    @Column(name="DATE")
+    private Date   date;
 }

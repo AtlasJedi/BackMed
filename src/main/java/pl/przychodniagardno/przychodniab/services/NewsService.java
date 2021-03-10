@@ -27,6 +27,8 @@ public class NewsService {
         tempNews.setContent(news.getContent());
         tempNews.setImgURL(news.getImgURL());
         tempNews.setTitle(news.getTitle());
+        tempNews.setActive(true);
+        tempNews.setReadMoreURL(news.getReadMoreURL());
 
         return newsRepo.save(tempNews);
     }
