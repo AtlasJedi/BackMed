@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +30,12 @@ public class News implements Serializable {
     @Column(name="CONTENT_LIST", nullable = false)
     private List<String>  content;
 
+    @Column(name="SUMMARY")
+    private String summary;
+
+    @Column(name="CATEGORY")
+    private String category;
+
     @Column(name="IMG_URL")
     private String imgURL;
 
@@ -42,5 +49,5 @@ public class News implements Serializable {
     private boolean isActive;
 
     @Column(name="DATE")
-    private Date   date;
+    private LocalDateTime   date;
 }

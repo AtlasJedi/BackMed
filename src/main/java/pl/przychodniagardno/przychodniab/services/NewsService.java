@@ -7,6 +7,7 @@ import pl.przychodniagardno.przychodniab.exceptionHandler.NewsNotFoundException;
 import pl.przychodniagardno.przychodniab.repo.NewsRepo;
 import pl.przychodniagardno.przychodniab.resources.News;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,8 +24,10 @@ public class NewsService {
 
     public News addOneNewNews(News news) {
         News tempNews = new News();
-        tempNews.setDate(Calendar.getInstance().getTime());
+        tempNews.setDate(LocalDateTime.now());
         tempNews.setContent(news.getContent());
+        tempNews.setSummary(news.getSummary());
+        tempNews.setCategory(news.getCategory());
         tempNews.setImgURL(news.getImgURL());
         tempNews.setTitle(news.getTitle());
         tempNews.setActive(true);
