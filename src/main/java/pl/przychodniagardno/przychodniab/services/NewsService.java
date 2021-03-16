@@ -27,7 +27,8 @@ public class NewsService {
         tempNews.setDate(LocalDateTime.now());
         tempNews.setContent(news.getContent());
         tempNews.setSummary(news.getSummary());
-        tempNews.setCategory(news.getCategory());
+
+        tempNews.setCategory(news.getCategory() != null ? news.getCategory() : "announcement");
         tempNews.setImgURL(news.getImgURL());
         tempNews.setTitle(news.getTitle());
         tempNews.setActive(true);
