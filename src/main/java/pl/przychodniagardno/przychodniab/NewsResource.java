@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import pl.przychodniagardno.przychodniab.resources.News;
 import pl.przychodniagardno.przychodniab.services.NewsService;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -26,7 +28,15 @@ public class NewsResource {
 
     @GetMapping("/all")
     public ResponseEntity<List<News>> getAllNews (){
+
         List<News> news = newsService.getAllNews();
+
+        return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    @GetMapping("/getLatest")
+    public ResponseEntity<News> getLatestNews (){
+        News news = newsService.getLatest();
 
         return new ResponseEntity<>(news, HttpStatus.OK);
     }

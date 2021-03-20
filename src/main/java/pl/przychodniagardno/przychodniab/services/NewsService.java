@@ -9,7 +9,9 @@ import pl.przychodniagardno.przychodniab.resources.News;
 
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -29,7 +31,8 @@ public class NewsService {
         tempNews.setSummary(news.getSummary());
 
         tempNews.setCategory(news.getCategory() != null ? news.getCategory() : "announcement");
-        tempNews.setImgURL(news.getImgURL());
+
+        tempNews.setImgURL(news.getImgURL() == null ? "url(assets/img/default.jpg)" : "url(assets/img/"+news.getImgURL()+")");
         tempNews.setTitle(news.getTitle());
         tempNews.setActive(true);
         tempNews.setReadMoreURL(news.getReadMoreURL());
@@ -38,9 +41,18 @@ public class NewsService {
     }
 
     public List<News> getAllNews() {
-        List<News> newsList = newsRepo.findAll();
+        List<News> newsList = newsRepo.findAll().stream()
+                .sorted(Comparator.comparing(News::getDate).reversed())
+                .collect(Collectors.toList());;
+
 
         return newsList;
+    }
+
+    public News getLatest(){
+        News news = newsRepo.findTopByOrderByIdDesc();
+
+        return news;
     }
 
     public News getNewsById(Long id){
