@@ -15,6 +15,7 @@
 	<description>Rest dla przychodni</description>
 	<properties>
 		<java.version>11</java.version>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,6 +45,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>

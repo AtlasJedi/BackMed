@@ -2,7 +2,7 @@
 spring:
   datasource:
     password: 48467711pp
-    url: jdbc:mysql://localhost:3306/daneprzychodni
+    url: jdbc:mysql://localhost:3306/przychodniadb?serverTimezone=UTC
     username: root
     resources:
       add-mappings: true
