@@ -1,4 +1,4 @@
-package pl.przychodniagardno.przychodniab;
+package pl.przychodniagardno.przychodniab.api.shared;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,32 +48,8 @@ public class NewsResource {
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
-    /* POST NEWS */
 
-    @PostMapping("/add")
-    public ResponseEntity<News> addNews(@RequestBody News news){
-        News tempNews = newsService.addOneNewNews(news);
 
-        return new ResponseEntity<>(tempNews, HttpStatus.CREATED);
-    }
-
-    /* PUT NEWS */
-
-    @PutMapping("/update")
-    public ResponseEntity<News> updateNews(@RequestBody News news){
-        News tempNews = newsService.updateNews(news);
-
-        return new ResponseEntity<>(tempNews, HttpStatus.OK);
-    }
-
-    /* DELETE NEWS */
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteNews(@PathVariable("id") Long id){
-        newsService.deleteNews(id);
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
 
 
