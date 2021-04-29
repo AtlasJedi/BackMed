@@ -33,4 +33,6 @@ public class PrzychodniaServiceAplication {
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 	}
 
+
+
 }
